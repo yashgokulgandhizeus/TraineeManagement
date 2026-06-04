@@ -1,6 +1,6 @@
 # Trainee Management API
 
-Hey there! This is a simple, no-nonsense backend Web API built with C# and .NET 10 to help manage and track trainee information. 
+Hey there! This is a simple, backend Web API built with C# and .NET 10 to help manage and track trainee information. 
 
 I built this project to keep track of trainee profiles, managing everything from basic details to their progress in one place.
 
@@ -8,9 +8,10 @@ I built this project to keep track of trainee profiles, managing everything from
 
 ## 🔥 What it does
 
-* **Manages Profiles:** Built-in endpoints to add, view, update, and delete trainee data.
+* **Manages Profiles:** Built-in endpoints to add, view trainee data.
 * **Ready to Test:** Comes with a `.http` file, so you can test the API endpoints directly inside VS Code or Visual Studio without needing Postman.
-* **Environment Ready:** Has separate setup files for development and production so nothing breaks when moving to a live server.
+* **In memory database** currently it is having in memory database so state will not be remembered when refreshed 
+
 
 ---
 
