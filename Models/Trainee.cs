@@ -2,7 +2,7 @@ namespace TraineeManagement.Api.Models;
 
 public class Trainee
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
@@ -15,4 +15,10 @@ public class Trainee
     public DateTime CreatedDate { get; set; }
 
     public DateTime UpdatedDate { get; set; }
+
+    public Trainee()
+    {
+        CreatedDate=DateTime.Now;
+        UpdatedDate=DateTime.Now;
+    }
 }

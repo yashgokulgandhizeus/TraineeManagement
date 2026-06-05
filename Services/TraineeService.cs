@@ -6,19 +6,20 @@ using TraineeManagement.Api.Dtos;
 
 public class TraineeService : ITraineeService
 {
+
+    int id=1;
     public TraineeResponse CreateTrainee(CreateTraineeRequest traineeRequest)
     {
-
+        
         Trainee trainee = new Trainee
         {
-            Id = TraineeStore.trainees.Count + 1,
+            Id = id++,
             FirstName = traineeRequest.FirstName,
             LastName = traineeRequest.LastName,
             Email = traineeRequest.Email,
             TechStack = traineeRequest.TechStack,
             Status = traineeRequest.Status,
-            CreatedDate = DateTime.Now,
-            UpdatedDate = DateTime.Now
+
         };
 
         TraineeStore.trainees.Add(trainee);
@@ -86,6 +87,7 @@ public class TraineeService : ITraineeService
             t.Email = trainee.Email;
             t.TechStack = trainee.TechStack;
             t.Status = trainee.Status;
+            t.UpdatedDate=DateTime.Now;
             return new TraineeResponse
             {
                 Id = t.Id,
