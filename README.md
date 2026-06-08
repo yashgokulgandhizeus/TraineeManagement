@@ -18,12 +18,12 @@ c# , asp.net web api, swagger
 ## Features Completed
 - /GET/health
 - GET /api/health
-- GET /api/trainees
+- GET /api/trainees/Search?=
 - GET /api/trainees/{id}
 - POST /api/trainees
 - PUT /api/trainees/{id}
 - DELETE /api/trainees/{id}
-- GET /api/trainees/Select?=
+
  
 1. GET /api/trainees or GET /api/trainees/search?search=JohnRequest Body: None.Sample Response JSON (List<TraineeResponse>):json[
   {

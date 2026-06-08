@@ -17,9 +17,23 @@ public class TraineesController : ControllerBase
 
     
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get(string? Search)
     {
+        if(Search==null)
         return Ok(await _service.GetAll());
+
+        else
+        {
+        List<TraineeResponse> t=await _service.Search(Search);
+        
+        if(t==null)
+        {
+            return NotFound("Not found");
+        }
+
+        return Ok(t);
+        }
+
     }
 
     [HttpGet("{id}")]
@@ -35,18 +49,6 @@ public class TraineesController : ControllerBase
         return Ok(t);
     }
 
-    [HttpGet("search")]
-    public async Task<IActionResult> Search([FromQuery] String search)
-    {
-        List<TraineeResponse> t=await _service.Search(search);
-        
-        if(t==null)
-        {
-            return NotFound("Not found");
-        }
-
-        return Ok(t);
-    }
 
     [HttpPost]
     public IActionResult Create(CreateTraineeRequest trainee)
