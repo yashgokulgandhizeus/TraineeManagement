@@ -14,14 +14,15 @@
         "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\NuGet.Config",
+          "C:\\Users\\yash.gokulgandhi\\NuGet.Config",
           "C:\\Users\\yash.gokulgandhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "https://zeuslearning-824100177805.d.codeartifact.ap-south-1.amazonaws.com/nuget/training-nuget-store/v3/index.json": {},
-          "https://zeuslearning-824100177805.d.codeartifact.us-east-1.amazonaws.com/nuget/training-npm-store/v3/index.json": {}
+          "https://zeuslearning-824100177805.d.codeartifact.ap-south-1.amazonaws.com/nuget/training-nuget-store/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
@@ -48,6 +49,10 @@
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[10.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[10.0.8, )"
             },

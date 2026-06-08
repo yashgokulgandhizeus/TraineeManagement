@@ -45,3 +45,7 @@ C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\De
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\NSwag.Generation.AspNetCore.dll
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\YamlDotNet.dll
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\obj\Debug\net10.0\TraineeManagement.Api.sourcelink.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\nuget.config
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll

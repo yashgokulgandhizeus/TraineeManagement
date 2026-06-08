@@ -4,12 +4,16 @@ using TraineeManagement.Api.Dtos;
 
 public interface ITraineeService
 {
-    List<TraineeResponse> GetAll();
+    Task<List<TraineeResponse>> GetAll();
 
-    TraineeResponse GetById(int id);
+    Task<TraineeResponse> GetById(int id);
 
-    TraineeResponse CreateTrainee(CreateTraineeRequest traineeRequest);
-    TraineeResponse Update(int id,UpdateTraineeRequest trainee);
+    Task<TraineeResponse> CreateTrainee(CreateTraineeRequest traineeRequest);
+    Task<TraineeResponse> Update(int id,UpdateTraineeRequest trainee);
 
-    bool Delete(int id);
+    Task<bool> Delete(int id);
+
+    Task<List<TraineeResponse>> Search(string Search);
+
+
 }

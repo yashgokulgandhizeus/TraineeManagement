@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "OBPTRqVNM6g=",
+  "dgSpecHash": "cVIunJ4mer0=",
   "success": true,
   "projectFilePath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.8\\microsoft.entityframeworkcore.10.0.8.nupkg.sha512",
+    "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.8\\microsoft.entityframeworkcore.abstractions.10.0.8.nupkg.sha512",
+    "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.8\\microsoft.entityframeworkcore.analyzers.10.0.8.nupkg.sha512",
+    "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\10.0.8\\microsoft.entityframeworkcore.inmemory.10.0.8.nupkg.sha512",
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\namotion.reflection\\3.5.0\\namotion.reflection.3.5.0.nupkg.sha512",
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
