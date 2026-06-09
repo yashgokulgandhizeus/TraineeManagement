@@ -1,31 +1,57 @@
 # Trainee Management API
 
-## 📂 Project Structure at a Glance
+A lightweight, robust ASP.NET Core Web API built with C# for managing trainee records, leveraging an EF Core In-Memory database provider for local execution.
 
-* `Controllers/`: Where the API request routes live.
-* `Services/`: contains actual buisness logic .
-* `Models/`: Where the data shapes and trainee objects are defined.
-* `DTOs/`: contains Data tranfer objects here instead using actual model we can define what properties of model will require from client and what response can also be shared.
-* `Data/`: contains dbcontext .
-* `Program.cs`: The main engine file that sets up the whole app.
-* `appsettings.json`: Where configuration settings are stored.
+---
 
-# Created
-TraineeManagement application
- 
-## Technology Used
-c# , asp.net web api, swagger
-## Features Completed
-- /GET/health
-- GET /api/health
-- GET /api/trainees/Search?=
-- GET /api/trainees/{id}
-- POST /api/trainees
-- PUT /api/trainees/{id}
-- DELETE /api/trainees/{id}
+## 🛠️ Technology Stack
+* **Language & Framework:** C# / .NET 10 SDK
+* **Database Provider:** Entity Framework Core (In-Memory Database)
+* **API Documentation:** Swagger / OpenAPI
 
- 
-1. GET /api/trainees or GET /api/trainees/search?search=JohnRequest Body: None.Sample Response JSON (List<TraineeResponse>):json[
+---
+
+## 📂 Project Architecture
+
+```text
+TraineeManagement/
+│
+├── Controllers/       # API endpoints, request routing, and HTTP status code maps
+├── Services/          # Centralized business logic and operational service layer
+├── Models/            # Core data shapes and domain-driven entities
+├── DTOs/              # Data Transfer Objects filtering client input/response shapes
+├── Data/              # ApplicationDbContext setup and persistent configurations
+├── Program.cs         # Main application bootstrapper and dependency injection container
+└── appsettings.json   # Global environment runtime configurations
+```
+
+---
+
+## 🚀 Features & Endpoints
+
+### 🩺 Health Diagnostics
+* `GET` `/health` - Service operational check
+* `GET` `/api/health` - Internal system diagnostics check
+
+### 👤 Trainee Operations
+* `GET` `/api/trainees` - Retrieve all trainees
+* `GET` `/api/trainees/search?search={query}` - Filter trainees by matching text
+* `GET` `/api/trainees/{id}` - Retrieve a specific trainee by primary key ID
+* `POST` `/api/trainees` - Register a new trainee profile
+* `PUT` `/api/trainees/{id}` - Modify details of an active trainee profile
+* `DELETE` `/api/trainees/{id}` - Remove a trainee from the database
+
+---
+
+## 📋 API Contracts & Payloads
+
+### 1. Get All or Search Trainees
+* **Route:** `GET /api/trainees` OR `GET /api/trainees/search?search=John`
+* **Request Body:** None
+
+#### Response Body (`200 OK` - `List<TraineeResponse>`)
+```json
+[
   {
     "id": 101,
     "firstName": "John",
@@ -45,9 +71,17 @@ c# , asp.net web api, swagger
     "status": "Active"
   }
 ]
-Use code with caution.
+```
 
-2. GET /api/trainees/{id}Request Body: None (ID passed via URL path, e.g., /api/trainees/101).Sample Response JSON (TraineeResponse):json{
+---
+
+### 2. Get Trainee By ID
+* **Route:** `GET /api/trainees/{id}` (e.g., `/api/trainees/101`)
+* **Request Body:** None
+
+#### Response Body (`200 OK` - `TraineeResponse`)
+```json
+{
   "id": 101,
   "firstName": "John",
   "lastName": "Doe",
@@ -56,16 +90,27 @@ Use code with caution.
   "joiningDate": "2026-06-01T00:00:00Z",
   "status": "Active"
 }
-Use code with caution.
+```
 
-3. POST /api/traineesSample Request JSON (CreateTraineeRequest):json{
+---
+
+### 3. Create Trainee
+* **Route:** `POST /api/trainees`
+
+#### Request Body (`CreateTraineeRequest`)
+```json
+{
   "firstName": "Alex",
   "lastName": "Jones",
   "email": "alex.jones@example.com",
   "department": "Quality Assurance",
   "joiningDate": "2026-06-15T09:00:00Z"
 }
-Use code with caution.Sample Response JSON (TraineeResponse via Ok status):json{
+```
+
+#### Response Body (`200 OK` - `TraineeResponse`)
+```json
+{
   "id": 103,
   "firstName": "Alex",
   "lastName": "Jones",
@@ -74,15 +119,26 @@ Use code with caution.Sample Response JSON (TraineeResponse via Ok status):json{
   "joiningDate": "2026-06-15T09:00:00Z",
   "status": "Onboarding"
 }
-Use code with caution.
+```
 
-4. PUT /api/trainees/{id }Sample Request JSON (UpdateTraineeRequest):json{
+---
+
+### 4. Update Trainee
+* **Route:** `PUT /api/trainees/{id}`
+
+#### Request Body (`UpdateTraineeRequest`)
+```json
+{
   "firstName": "Johnathan",
   "lastName": "Doe",
   "department": "DevOps",
   "status": "Completed"
 }
-Use code with caution.Sample Response JSON (TraineeResponse):json{
+```
+
+#### Response Body (`200 OK` - `TraineeResponse`)
+```json
+{
   "id": 101,
   "firstName": "Johnathan",
   "lastName": "Doe",
@@ -91,21 +147,41 @@ Use code with caution.Sample Response JSON (TraineeResponse):json{
   "joiningDate": "2026-06-01T00:00:00Z",
   "status": "Completed"
 }
-Use code with caution.
+```
 
-5. DELETE /api/trainees/{id} Request Body: None.Response Body: None (Returns a clean HTTP status code 200 OK or 404 Not Found).
+---
 
-## How to Run
-1. Prerequisites
-You will just need the **.NET 10 SDK** installed on your computer.
- 
-2. Navigation
-move into the folder: cd TraineeManagement
- 
-3. Run the App
-To start the local development server, run: dotnet run --project TraineeManagement.Api.csproj
- 
-## Limitations
-- Basic Text Searching Only: The search endpoint filters by a single query parameter string. It lacks advanced filter variables (e.g., date ranges, department filters, status sorting).
-- Missing Pagination: The endpoints fetch all results at once. Large datasets will degrade application performance without page and pageSize limiters.In-Memory or Local Scope Routing:
-- There are no global exception-handling middleware filters. Unexpected database or service errors will expose raw backend stack traces to clients.
+### 5. Delete Trainee
+* **Route:** `DELETE /api/trainees/{id}`
+* **Request Body:** None
+* **Response Status Codes:** Returns a blank `200 OK` on successful removal, or a `404 Not Found` if the record does not exist.
+
+---
+
+## 🏃 Getting Started & How to Run
+
+### 1. Prerequisites
+Ensure you have the latest **.NET 10 SDK** installed on your system.
+
+### 2. Navigation
+Open your terminal and step directly into the project directory:
+```bash
+cd TraineeManagement
+```
+
+### 3. Execution
+Launch the local Kestrel Web Server targeting the API application:
+```bash
+dotnet run --project TraineeManagement.Api.csproj
+```
+
+Once running, navigate to the local hosting address printed in your terminal (typically `http://localhost:5000/swagger` or similar) to interactively trace requests via the Swagger UI.
+
+---
+
+## ⚠️ Known Limitations
+
+* **Basic Text Searching:** The search implementation handles raw, single-parameter text matching. Advanced filtering criteria (such as status sorting or dynamic date boundaries) are currently unavailable.
+* **Lack of Data Pagination:** Endpoints yield all query results simultaneously inside a single payload. High volumes of records may cause processing performance degradation.
+* **Volatile Persistence Constraints:** Uses an EF Core In-Memory provider context; stopping or restarting the runtime engine execution processes automatically destroys all modified data records.
+* **Raw Exception Management:** The API lacks specialized global Exception Filter Middleware. Uncaught system exceptions can propagate backend traces directly to API consumers.
