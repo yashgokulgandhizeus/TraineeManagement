@@ -16,7 +16,7 @@ public class TraineeService : ITraineeService
         _context = context;
     }
 
-    public TraineeResponse TraineeToResponse(Trainee trainee)
+    public static TraineeResponse TraineeToResponse(Trainee trainee)
     {
         return new TraineeResponse
         {
@@ -29,7 +29,7 @@ public class TraineeService : ITraineeService
         };
     }
 
-    public Trainee RequestToTrainee(CreateTraineeRequest TraineeRequest)
+    public static Trainee RequestToTrainee(CreateTraineeRequest TraineeRequest)
     {
         return new Trainee
         {

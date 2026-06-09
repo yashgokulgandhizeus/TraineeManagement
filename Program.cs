@@ -12,8 +12,12 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<ITraineeService,TraineeService>();
 
+// Extract the connection string from configuration
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Register DbContext with MySQL support
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("InMemoryProductDb"));
+    options.UseMySQL(connectionString));
 
 var app = builder.Build();
 
