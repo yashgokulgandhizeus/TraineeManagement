@@ -10,40 +10,40 @@ public class TraineesController : ControllerBase
 {
     private readonly ITraineeService _service;
 
-    public TraineesController(ITraineeService traineeService)
+    public TraineesController(ITraineeService TraineeService)
     {
-        _service=traineeService;
+        _service = TraineeService;
     }
 
-    
+
     [HttpGet]
     public async Task<IActionResult> Get(string? Search)
     {
-        if(Search==null)
-        return Ok(await _service.GetAll());
+        if (Search == null)
+            return Ok(await _service.GetAll());
 
         else
         {
-        List<TraineeResponse> t=await _service.Search(Search);
-        
-        if(t==null)
-        {
-            return NotFound("Not found");
-        }
+            List<TraineeResponse> t = await _service.Search(Search);
 
-        return Ok(t);
+            if (t.Count == 0)
+            {
+                return Ok();
+            }
+
+            return Ok(t);
         }
 
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("{id}",Name ="GetTraineeById")]
+    public async Task<IActionResult> GetById(int Id)
     {
-        TraineeResponse t=await _service.GetById(id);
-        
-        if(t==null)
+        TraineeResponse t = await _service.GetById(Id);
+
+        if (t == null)
         {
-            return NotFound("Not found");
+            return Ok();
         }
 
         return Ok(t);
@@ -51,17 +51,19 @@ public class TraineesController : ControllerBase
 
 
     [HttpPost]
-    public IActionResult Create(CreateTraineeRequest trainee)
+    public async Task<IActionResult> Create(CreateTraineeRequest Trainee)
     {
-     
-        return Ok(_service.CreateTrainee(trainee));
+
+        TraineeResponse TraineeResponse=await _service.CreateTrainee(Trainee);
+
+        return CreatedAtRoute("GetTraineeById", new { id = TraineeResponse.Id }, TraineeResponse);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id,UpdateTraineeRequest trainee)
+    public async Task<IActionResult> Update(int id, UpdateTraineeRequest Trainee)
     {
-        TraineeResponse traineeResponse=await _service.Update(id,trainee);
-        if(traineeResponse==null)
+        TraineeResponse traineeResponse = await _service.Update(id, Trainee);
+        if (traineeResponse == null)
         {
             return NotFound();
         }
@@ -70,11 +72,11 @@ public class TraineesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(int Id)
     {
-        bool res=await _service.Delete(id);
+        bool res = await _service.Delete(Id);
 
-        if(res)
+        if (res)
         {
             return Ok();
         }
@@ -83,7 +85,7 @@ public class TraineesController : ControllerBase
         {
             return NotFound();
         }
-    } 
+    }
 
-   
+
 }

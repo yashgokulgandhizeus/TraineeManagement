@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 public class TraineeService : ITraineeService
 {
 
-    
+
     private readonly AppDbContext _context;
 
     public TraineeService(AppDbContext context)
@@ -16,76 +16,67 @@ public class TraineeService : ITraineeService
         _context = context;
     }
 
-    static int id=1;
-
-    public async Task<TraineeResponse> CreateTrainee(CreateTraineeRequest traineeRequest)
+    public TraineeResponse TraineeToResponse(Trainee trainee)
     {
-        
-        Trainee trainee = new Trainee
+        return new TraineeResponse
         {
-            Id = id++,
-            FirstName = traineeRequest.FirstName,
-            LastName = traineeRequest.LastName,
-            Email = traineeRequest.Email,
-            TechStack = traineeRequest.TechStack,
-            Status = traineeRequest.Status,
-
+            Id = trainee.Id,
+            FirstName = trainee.FirstName,
+            LastName = trainee.LastName,
+            Email = trainee.Email,
+            TechStack = trainee.TechStack,
+            Status = trainee.Status
         };
+    }
+
+    public Trainee RequestToTrainee(CreateTraineeRequest TraineeRequest)
+    {
+        return new Trainee
+        {
+            FirstName = TraineeRequest.FirstName,
+            LastName = TraineeRequest.LastName,
+            Email = TraineeRequest.Email,
+            TechStack = TraineeRequest.TechStack,
+            Status = TraineeRequest.Status,
+        };
+    }
+
+
+    public async Task<TraineeResponse> CreateTrainee(CreateTraineeRequest TraineeRequest)
+    {
+
+        Trainee trainee = RequestToTrainee(TraineeRequest);
 
         _context.Trainees.Add(trainee);
 
         await _context.SaveChangesAsync();
 
-        return new TraineeResponse
-        {
-            Id = trainee.Id,
-            FirstName = trainee.FirstName,
-            LastName = trainee.LastName,
-            Email = trainee.Email,
-            TechStack = trainee.TechStack,
-            Status = trainee.Status
-        };
+        return TraineeToResponse(trainee);
     }
 
     public async Task<List<TraineeResponse>> GetAll()
     {
-        List<TraineeResponse> response =await _context.Trainees.Select(t => new TraineeResponse
-        {
-            Id = t.Id,
-            FirstName = t.FirstName,
-            LastName = t.LastName,
-            Email = t.Email,
-            TechStack = t.TechStack,
-            Status = t.Status
-        }).ToListAsync();
+        List<TraineeResponse> Response = await _context.Trainees.Select(t => TraineeToResponse(t)).ToListAsync();
 
-        return response;
+        return Response;
     }
 
-    public async Task<TraineeResponse> GetById(int id)
+    public async Task<TraineeResponse> GetById(int Id)
     {
-        Trainee trainee =await _context.Trainees.FirstOrDefaultAsync(t => t.Id == id);
+        Trainee Trainee = await _context.Trainees.FirstOrDefaultAsync(t => t.Id == Id);
 
-        if (trainee == null)
+        if (Trainee == null)
         {
             return null;
         }
 
-        return new TraineeResponse
-        {
-            Id = trainee.Id,
-            FirstName = trainee.FirstName,
-            LastName = trainee.LastName,
-            Email = trainee.Email,
-            TechStack = trainee.TechStack,
-            Status = trainee.Status
-        };
+        return TraineeToResponse(Trainee);
 
     }
 
-    public async Task<TraineeResponse> Update(int id, UpdateTraineeRequest trainee)
+    public async Task<TraineeResponse> Update(int id, UpdateTraineeRequest Trainee)
     {
-        Trainee t =await _context.Trainees.FirstOrDefaultAsync(x => x.Id == id);
+        Trainee t = await _context.Trainees.FirstOrDefaultAsync(x => x.Id == id);
 
         if (t == null)
             return null;
@@ -94,62 +85,49 @@ public class TraineeService : ITraineeService
         else
         {
 
-            t.FirstName = trainee.FirstName;
-            t.LastName = trainee.LastName;
-            t.Email = trainee.Email;
-            t.TechStack = trainee.TechStack;
-            t.Status = trainee.Status;
-            t.UpdatedDate=DateTime.Now;
-            return new TraineeResponse
-            {
-                Id = t.Id,
-                FirstName = t.FirstName,
-                LastName = t.LastName,
-                Email = t.Email,
-                TechStack = t.TechStack,
-                Status = t.Status
-            };
+            t.FirstName = Trainee.FirstName;
+            t.LastName = Trainee.LastName;
+            t.Email = Trainee.Email;
+            t.TechStack = Trainee.TechStack;
+            t.Status = Trainee.Status;
+            t.UpdatedDate = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+
+            return TraineeToResponse(t);
         }
     }
 
-    public async Task<bool> Delete(int id)
+    public async Task<bool> Delete(int Id)
     {
-        Trainee t=await _context.Trainees.FirstOrDefaultAsync(x=>x.Id==id);
+        Trainee t = await _context.Trainees.FirstOrDefaultAsync(x => x.Id == Id);
 
-        if(t==null)
-        return false;
+        if (t == null)
+            return false;
 
         else
         {
 
-        _context.Trainees.Remove(t);
+            _context.Trainees.Remove(t);
 
-        await _context.SaveChangesAsync();
-        return true;
+            await _context.SaveChangesAsync();
+            return true;
 
         }
     }
 
     public async Task<List<TraineeResponse>> Search(string Search)
     {
-        
-        List<TraineeResponse> traineeResponses=await _context.Trainees.Where(e=>e.FirstName==Search || e.LastName==Search || e.Email==Search || e.TechStack==Search).Select(t=>new TraineeResponse{
-            Id=t.Id,
-            FirstName=t.FirstName,
-            LastName=t.LastName,
-            Email=t.Email,
-            TechStack=t.TechStack,
-            Status=t.Status
-        }).ToListAsync();
 
-        if(traineeResponses==null)
-        return null;
+        List<TraineeResponse> traineeResponses = await _context.Trainees.Where(e => e.FirstName == Search || e.LastName == Search || e.Email == Search || e.TechStack == Search)
+        .Select(t => TraineeToResponse(t)).ToListAsync();
+
+        if (traineeResponses == null)
+            return null;
 
         else
-        return traineeResponses;
-        
+            return traineeResponses;
 
-    }
+}
 
- 
 }
