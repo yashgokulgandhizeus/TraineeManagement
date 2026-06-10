@@ -15,6 +15,7 @@ public class User
     
     public string PasswordHash { get; set; }
 
+    [AllowedValues("admin", "mentor", "trainee", ErrorMessage = "Invalid role.")]
     public string Role { get; set; }
 
     public DateTime CreatedDate { get; set; }
