@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 public class TraineeService : ITraineeService
 {
 
-
     private readonly AppDbContext _context;
 
     public TraineeService(AppDbContext context)
