@@ -39,7 +39,7 @@ public class AuthService : IAuthService
         return new LoginResponse
         {
             Token=token,
-            ExpiresIn=minutes,
+            ExpiresIn=minutes*60,
             User=new UserInfo
             {
               Id=user.Id,
