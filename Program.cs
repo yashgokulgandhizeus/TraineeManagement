@@ -17,6 +17,19 @@ builder.Services.AddScoped<ITraineeService,TraineeService>();
 
 builder.Services.AddScoped<IAuthService,AuthService>();
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("http://localhost:3000",
+                                              "http://localhost:5173");
+                      });
+}); 
+
+
 // Extract the connection string from configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -56,7 +69,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 

@@ -4,7 +4,7 @@ using TraineeManagement.Api.Dtos;
 
 public interface ITraineeService
 {
-    Task<List<TraineeResponse>> GetAll();
+    Task<PaginationQueryResponse<TraineeResponse>> GetAll(PaginationQueryRequest Request);
 
     Task<TraineeResponse> GetById(int id);
 
@@ -13,7 +13,7 @@ public interface ITraineeService
 
     Task<bool> Delete(int id);
 
-    Task<List<TraineeResponse>> Search(string Search);
+    // Task<List<TraineeResponse>> Search(string Search);
 
 
 }

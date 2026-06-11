@@ -14,43 +14,54 @@ public class AuthService : IAuthService
 
     private readonly AppDbContext _context;
     private readonly IConfiguration _config;
+    private readonly ILogger<AuthService> _logger;
 
-    public AuthService(AppDbContext dbContext,IConfiguration configuration)
+    public AuthService(AppDbContext dbContext, IConfiguration configuration, ILogger<AuthService> logger)
     {
-        _context=dbContext;
-        _config=configuration;
+        _context = dbContext;
+        _config = configuration;
+        _logger = logger;
     }
     public async Task<LoginResponse> Login(LoginRequest Request)
     {
-        User user=await _context.Users.FirstOrDefaultAsync(e=>e.UserName==Request.UserName);
+        User user = await _context.Users.FirstOrDefaultAsync(e => e.UserName == Request.UserName);
 
-        if(user==null)
-        return null;
+        if (user == null)
+        {
 
-        bool IsValid=BCrypt.Net.BCrypt.Verify(Request.Password,user.PasswordHash);
+            _logger.LogCritical("User not found with username:" + Request.UserName);
+            return null;
 
-        if(!IsValid)
-        return null;
+        }
 
-        string token=GenerateJwtToken(user.Id,user.UserName,user.Role);
+        bool IsValid = BCrypt.Net.BCrypt.Verify(Request.Password, user.PasswordHash);
 
-        int minutes=int.Parse(_config["jwt:ExpiryMinutes"]);
+        if (!IsValid)
+        {
+            _logger.LogCritical("Usename or password is incorrect for" + Request.UserName);
+            return null;
+        }
+        string token = GenerateJwtToken(user.Id, user.UserName, user.Role);
+
+        int minutes = int.Parse(_config["jwt:ExpiryMinutes"]);
+
+        _logger.LogInformation("Login done and jwt token genereated and send for Username:"+Request.UserName+" and Password:"+Request.Password);
 
         return new LoginResponse
         {
-            Token=token,
-            ExpiresIn=minutes*60,
-            User=new UserInfo
+            Token = token,
+            ExpiresIn = minutes * 60,
+            User = new UserInfo
             {
-              Id=user.Id,
-              UserName=user.UserName,
-              Role=user.Role
+                Id = user.Id,
+                UserName = user.UserName,
+                Role = user.Role
             }
         };
-        
+
     }
 
-    public string GenerateJwtToken(int Id,string UserName,string Role)
+    public string GenerateJwtToken(int Id, string UserName, string Role)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

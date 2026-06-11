@@ -19,22 +19,9 @@ public class TraineesController : ControllerBase
 
 
     [HttpGet]
-    public async Task<IActionResult> Get(string? Search)
+    public async Task<IActionResult> Get([FromQuery]PaginationQueryRequest Request)
     {
-        if (Search == null)
-            return Ok(await _service.GetAll());
-
-        else
-        {
-            List<TraineeResponse> t = await _service.Search(Search);
-
-            if (t.Count == 0)
-            {
-                return Ok();
-            }
-
-            return Ok(t);
-        }
+        return Ok(await _service.GetAll(Request));
 
     }
 

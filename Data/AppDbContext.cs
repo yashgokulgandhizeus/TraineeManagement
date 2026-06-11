@@ -25,7 +25,7 @@ public class AppDbContext : DbContext
             UserName="Admin",
             Email="admin@gmail.com",
             PasswordHash=BCrypt.Net.BCrypt.HashPassword("admin@123"),
-            Role="Admin"
+            Role="admin"
     
         });
 
