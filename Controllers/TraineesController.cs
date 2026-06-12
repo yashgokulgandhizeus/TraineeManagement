@@ -11,6 +11,7 @@ namespace TraineeManagement.Api.Controllers;
 public class TraineesController : ControllerBase
 {
     private readonly ITraineeService _service;
+    
 
     public TraineesController(ITraineeService TraineeService)
     {

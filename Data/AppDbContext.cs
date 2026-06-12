@@ -14,6 +14,10 @@ public class AppDbContext : DbContext
 
     public DbSet<User> Users=> Set<User>();
 
+    public DbSet<Mentor> Mentors => Set<Mentor>();
+
+    public DbSet<LearningTask> LearningTasks=>Set<LearningTask>();
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

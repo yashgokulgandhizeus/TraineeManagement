@@ -4,6 +4,7 @@ using TraineeManagement.Api.Data;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TraineeManagement.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,10 @@ builder.Services.AddOpenApi();
 builder.Services.AddScoped<ITraineeService,TraineeService>();
 
 builder.Services.AddScoped<IAuthService,AuthService>();
+
+builder.Services.AddScoped<IMentorService,MentorService>();
+
+builder.Services.AddScoped<ILearningTaskService,LearningTaskService>();
 
 var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
