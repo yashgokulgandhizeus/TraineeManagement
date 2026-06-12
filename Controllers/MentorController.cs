@@ -1,10 +1,13 @@
 namespace TraineeManagement.Api.Controllers;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraineeManagement.Api.Dtos;
 using TraineeManagement.Api.Models;
 
 [ApiController]
 [Route("api/mentor")]
+[Authorize]
 public class MentorController:ControllerBase
 {
 
