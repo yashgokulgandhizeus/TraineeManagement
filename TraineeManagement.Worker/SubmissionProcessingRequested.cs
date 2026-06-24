@@ -1,13 +1,14 @@
-using System;
+using System.Text.Json;
+using TraineeManagement.Api.Models;
 
-namespace TraineeManagement.Worker.Messaging;
+namespace TraineeManagement.Contracts;
 
-public record SubmissionProcessingRequested
+public class SubmissionProcessingRequested
 {
-    public Guid MessageId { get; init; } = Guid.NewGuid();
-    public Guid CorrelationId { get; init; } = Guid.NewGuid();
-    public int SubmissionId { get; init; }
-    public int FileId { get; init; }
-    public DateTime RequestedAt { get; init; } = DateTime.UtcNow;
-    public string ContractVersion { get; init; } = "1.0.0";
+    public Guid MessageId { get; set; } = Guid.NewGuid();
+    public Guid CorrelationId { get; set; } = Guid.NewGuid();
+    public int SubmissionId { get; set; }
+    public int FileId { get; set; }
+    public DateTime RequestedAt { get; set; } = DateTime.UtcNow;
+    public string ContractVersion { get; set; } = "1.0.0";
 }
