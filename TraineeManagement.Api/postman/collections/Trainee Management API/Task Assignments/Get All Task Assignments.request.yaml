@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get All Task Assignments
+method: GET
+url: '{{base_url}}/api/task-assignments'
+order: 1000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'

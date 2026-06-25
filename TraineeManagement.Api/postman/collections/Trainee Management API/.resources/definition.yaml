@@ -1,0 +1,7 @@
+$kind: collection
+name: Trainee Management API
+variables:
+  - key: base_url
+    value: 'http://localhost:5254'
+  - key: token
+    value: ''

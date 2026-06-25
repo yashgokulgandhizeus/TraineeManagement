@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get All Submissions
+method: GET
+url: '{{base_url}}/api/submissions'
+order: 1000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'

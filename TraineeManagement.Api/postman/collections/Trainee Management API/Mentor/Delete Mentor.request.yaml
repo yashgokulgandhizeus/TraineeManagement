@@ -1,0 +1,11 @@
+$kind: http-request
+name: Delete Mentor
+method: DELETE
+url: '{{base_url}}/api/mentor/:id'
+order: 5000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'
+pathVariables:
+  - key: id
+    value: '1'

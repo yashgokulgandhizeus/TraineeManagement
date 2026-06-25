@@ -1,0 +1,19 @@
+$kind: http-request
+name: Get All Trainees
+method: GET
+url: '{{base_url}}/api/Trainees'
+order: 1000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'
+queryParams:
+  - key: PageNumber
+    value: '1'
+  - key: PageSize
+    value: '10'
+  - key: Search
+    value: ''
+    disabled: true
+  - key: Status
+    value: ''
+    disabled: true

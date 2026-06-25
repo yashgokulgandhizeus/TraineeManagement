@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get All Reviews
+method: GET
+url: '{{base_url}}/api/review'
+order: 1000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'

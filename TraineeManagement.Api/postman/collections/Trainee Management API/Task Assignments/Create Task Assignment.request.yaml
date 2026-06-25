@@ -1,0 +1,19 @@
+$kind: http-request
+name: Create Task Assignment
+method: POST
+url: '{{base_url}}/api/task-assignments'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+body:
+  type: json
+  content: |-
+    {
+      "traineeId": 1,
+      "mentorId": 1,
+      "learningTaskId": 1,
+      "status": "Assigned"
+    }

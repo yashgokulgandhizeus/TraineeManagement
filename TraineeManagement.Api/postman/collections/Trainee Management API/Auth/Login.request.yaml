@@ -1,0 +1,22 @@
+$kind: http-request
+name: Login
+method: POST
+url: "{{base_url}}/api/auth/login"
+order: 1000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "userName": "admin",
+      "password": "admin@123"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const json = pm.response.json();
+      if (json.token) {
+        pm.collectionVariables.set("token", json.token);
+      }
+    language: text/javascript

@@ -1,0 +1,19 @@
+$kind: http-request
+name: Create Review
+method: POST
+url: '{{base_url}}/api/review'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+body:
+  type: json
+  content: |-
+    {
+      "submissionId": 1,
+      "feedback": "Good work, minor improvements needed.",
+      "score": 8,
+      "reviewStatus": "Accepted"
+    }

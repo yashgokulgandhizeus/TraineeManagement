@@ -1,0 +1,19 @@
+$kind: http-request
+name: Create Submission
+method: POST
+url: '{{base_url}}/api/submissions'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+body:
+  type: json
+  content: |-
+    {
+      "taskAssignmentId": 1,
+      "submissionUrl": "https://github.com/example/repo",
+      "notes": "Completed all required features.",
+      "status": "Submitted"
+    }

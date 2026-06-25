@@ -1,0 +1,11 @@
+$kind: http-request
+name: Get Task Assignment By Id
+method: GET
+url: '{{base_url}}/api/task-assignments/:id'
+order: 2000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'
+pathVariables:
+  - key: id
+    value: '1'

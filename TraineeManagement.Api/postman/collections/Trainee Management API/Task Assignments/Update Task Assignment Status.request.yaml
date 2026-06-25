@@ -1,0 +1,13 @@
+$kind: http-request
+name: Update Task Assignment Status
+method: PUT
+url: '{{base_url}}/api/task-assignments/:Id/:Status'
+order: 4000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'
+pathVariables:
+  - key: Id
+    value: '1'
+  - key: Status
+    value: InProgress

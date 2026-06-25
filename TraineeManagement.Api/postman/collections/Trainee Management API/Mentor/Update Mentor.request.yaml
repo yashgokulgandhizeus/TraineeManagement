@@ -1,0 +1,23 @@
+$kind: http-request
+name: Update Mentor
+method: PUT
+url: '{{base_url}}/api/mentor/:id'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+pathVariables:
+  - key: id
+    value: '1'
+body:
+  type: json
+  content: |-
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "experties": "React, Node.js, AWS, Docker",
+      "status": "Active"
+    }

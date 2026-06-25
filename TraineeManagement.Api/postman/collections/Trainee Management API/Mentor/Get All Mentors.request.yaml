@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get All Mentors
+method: GET
+url: '{{base_url}}/api/mentor'
+order: 1000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'

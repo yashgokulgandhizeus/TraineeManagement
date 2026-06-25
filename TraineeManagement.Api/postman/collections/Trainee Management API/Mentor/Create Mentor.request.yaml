@@ -1,0 +1,20 @@
+$kind: http-request
+name: Create Mentor
+method: POST
+url: '{{base_url}}/api/mentor'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+body:
+  type: json
+  content: |-
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "experties": "React, Node.js, AWS",
+      "status": "Active"
+    }
