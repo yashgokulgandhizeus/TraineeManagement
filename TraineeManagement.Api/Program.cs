@@ -20,10 +20,8 @@ builder.Services.AddHttpClient("TrainingDirectoryService", client =>
 })
 .AddStandardResilienceHandler();
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<ITraineeService,TraineeService>();

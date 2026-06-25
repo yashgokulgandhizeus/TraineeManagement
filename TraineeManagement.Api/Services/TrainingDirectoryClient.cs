@@ -10,7 +10,6 @@ namespace TraineeManagement.Api.Services;
 
 public class TrainingDirectoryClient : ITrainingDirectoryClient
 {
-    // 🟢 TASK 3.18: Explicit utilization of the unmanaged socket factory manager pooling abstraction
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly ILogger<TrainingDirectoryClient> _logger;
@@ -27,14 +26,11 @@ public class TrainingDirectoryClient : ITrainingDirectoryClient
 
     public async Task<DirectoryProfileDto?> GetProfileAsync(int traineeId, CancellationToken cancellationToken)
     {
-        // 🟢 TASK 3.18: Explicitly instantiate a managed connection wrapper from the pooled factory engine
         var httpClient = _httpClientFactory.CreateClient("TrainingDirectoryService");
 
-        // 🟢 TASK 3.18: Dynamic Correlation ID Propagation Extraction
         var httpContext = _httpContextAccessor.HttpContext;
         string correlationId = httpContext?.Request.Headers["X-Correlation-ID"].ToString() ?? Guid.NewGuid().ToString();
 
-        // Construct clean, typed request contracts passing cancellation tokens explicitly
         var request = new HttpRequestMessage(HttpMethod.Get, $"api/internal/trainees/{traineeId}");
         request.Headers.Add("X-Correlation-ID", correlationId); // Propagated securely
 
@@ -42,7 +38,6 @@ public class TrainingDirectoryClient : ITrainingDirectoryClient
 
         using var response = await httpClient.SendAsync(request, cancellationToken);
 
-        // Explicitly handle non-success responses to isolate transient boundaries from processing errors
         if (!response.IsSuccessStatusCode)
         {
             _logger.LogWarning("Remote internal directory API returned a non-success status code: {Status}", response.StatusCode);
