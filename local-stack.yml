@@ -1,0 +1,140 @@
+services:
+  # --- INFRASTRUCTURE SERVICES ---
+  
+  local_mysql:
+    image: mysql:8.0
+    container_name: local_mysql
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  redis:
+    image: traineemanagement_redis-cache:latest
+    container_name: local_redis
+    restart: always
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  rabbitmq:
+    image: traineemanagement_rabbitmq-broker:latest
+    container_name: local_rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # --- APPLICATION SERVICES ---
+  
+  traineemanagement-api:
+    image: traineemanagement-api:v1.0.0
+    container_name: traineemanagement_api
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: TraineeManagement.Api/Dockerfile
+      args:
+        - CODEARTIFACT_TOKEN=${TOKEN}
+    ports:
+      - "5254:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - app_uploads:/app/Uploads
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ConnectionStrings__DefaultConnection=Server=local_mysql;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
+      - ConnectionStrings__Redis=local_redis:6379
+      - RabbitMQ__Host=local_rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__Username=${RABBITMQ_DEFAULT_USER}
+      - RabbitMQ__Password=${RABBITMQ_DEFAULT_PASS}
+      - Jwt__Key=${JWT_KEY}
+      - FileStorage__UploadPath=${FILESTORAGE_UPLOADPATH}
+    depends_on:
+      local_mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  traineemanagement-worker:
+    image: traineemanagement-worker:v1.0.0
+    container_name: traineemanagement_worker
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: TraineeManagement.Worker/Dockerfile
+      args:
+        - CODEARTIFACT_TOKEN=${TOKEN}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - app_uploads:/app/Uploads
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ConnectionStrings__DefaultConnection=Server=local_mysql;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
+      - ConnectionStrings__Redis=local_redis:6379
+      - RabbitMQ__Host=local_rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__Username=${RABBITMQ_DEFAULT_USER}
+      - RabbitMQ__Password=${RABBITMQ_DEFAULT_PASS}
+      - Jwt__Key=${JWT_KEY}
+      # FIXED: Cleaned up the 'FILEFILE' prefix typo right here
+      - FileStorage__UploadPath=${FILESTORAGE_UPLOADPATH}
+    depends_on:
+      local_mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  trainingdirectory-api:
+    image: trainingdirectory-api:v1.0.0
+    container_name: trainingdirectory_api
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: TrainingDirectory.Api/Dockerfile
+      args:
+        - CODEARTIFACT_TOKEN=${TOKEN}
+    ports:
+      - "5050:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    depends_on:
+      local_mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+# Declares the database and file upload storage spaces 
+volumes:
+  mysql_data:
+  app_uploads:

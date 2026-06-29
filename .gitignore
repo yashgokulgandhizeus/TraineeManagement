@@ -1,0 +1,62 @@
+## #######################################################################
+## .NET Core / Visual Studio & Rider Build Artifacts
+## #######################################################################
+[Db]in/
+[Ob]bj/
+[Log]ogs/
+*.exe
+*.dll
+*.pdb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## #######################################################################
+## Docker & Container Development Artifacts
+## #######################################################################
+.dockerignore
+# Ignore dynamic IDE-generated compose configurations
+docker-compose.override.yml
+docker-compose.vs.debug.g.yml
+docker-compose.vs.release.g.yml
+
+## #######################################################################
+## Security & Secret Configurations (CRITICAL)
+## #######################################################################
+# NEVER commit your local credentials or corporate JWT signing keys
+.env
+local.env
+appsettings.Production.json
+
+# ALLOW the template configuration to be tracked by Git
+!temp.env
+
+## #######################################################################
+## Local Runtime & Upload Storage
+## #######################################################################
+# Ignore local persistent file storage uploads so you don't commit trainee files
+Uploads/
+**/Uploads/
+_artifacts/
+TestResults/
+
+## #######################################################################
+## IDE & User-Specific Settings
+## #######################################################################
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VisualStudio.g.csproj
+
+## #######################################################################
+## OS Specific System Overrides
+## #######################################################################
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,96 @@
+services:
+  # --- INFRASTRUCTURE SERVICES ---
+  redis:
+    image: traineemanagement_redis-cache:latest
+    container_name: local_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  rabbitmq:
+    image: traineemanagement_rabbitmq-broker:latest
+    container_name: local_rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # --- APPLICATION SERVICES ---
+  traineemanagement-api:
+    image: traineemanagement-api:v1.0.0
+    container_name: traineemanagement_api
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: TraineeManagement.Api/Dockerfile
+      args:
+        - CODEARTIFACT_TOKEN=${TOKEN}
+    ports:
+      - "5254:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=host.docker.internal;Port=3306;Database=TraineeManagement;User=root;Password=root;
+      - ConnectionStrings__Redis=redis:6379
+      - RabbitMQ__Host=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__Username=guest
+      - RabbitMQ__Password=guest
+    depends_on:
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  traineemanagement-worker:
+    image: traineemanagement-worker:v1.0.0
+    container_name: traineemanagement_worker
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: TraineeManagement.Worker/Dockerfile
+      args:
+        - CODEARTIFACT_TOKEN=${TOKEN}
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=host.docker.internal;Port=3306;Database=TraineeManagement;User=root;Password=root;
+      - ConnectionStrings__Redis=redis:6379
+      - RabbitMQ__Host=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__Username=guest
+      - RabbitMQ__Password=guest
+    depends_on:
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  trainingdirectory-api:
+    image: trainingdirectory-api:v1.0.0
+    container_name: trainingdirectory_api
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: TrainingDirectory.Api/Dockerfile
+      args:
+        - CODEARTIFACT_TOKEN=${TOKEN}
+    ports:
+      - "5050:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      redis:
+        condition: service_healthy
