@@ -1,0 +1,9 @@
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\TrainingDirectory.Api.exe
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\appsettings.Development.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\appsettings.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\TrainingDirectory.Api.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\TrainingDirectory.Api.deps.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\TrainingDirectory.Api.runtimeconfig.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\TrainingDirectory.Api.pdb
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\publish\Microsoft.OpenApi.dll

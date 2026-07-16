@@ -175,3 +175,13 @@ C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\De
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Polly.Core.dll
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Polly.Extensions.dll
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Polly.RateLimiting.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\HealthChecks.Rabbitmq.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\HealthChecks.Redis.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\nuget.config
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\web.config
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\appsettings.Development.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\appsettings.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\TraineeManagement.Api.deps.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\TraineeManagement.Api.runtimeconfig.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TraineeManagement.Api\bin\Debug\net10.0\publish\TraineeManagement.Api.staticwebassets.endpoints.json

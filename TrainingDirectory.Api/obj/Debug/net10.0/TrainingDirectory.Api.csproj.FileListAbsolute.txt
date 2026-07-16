@@ -32,3 +32,9 @@ C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\obj\De
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\obj\Debug\net10.0\TrainingDirectory.Api.pdb
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\obj\Debug\net10.0\TrainingDirectory.Api.genruntimeconfig.cache
 C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\obj\Debug\net10.0\ref\TrainingDirectory.Api.dll
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\bin\Debug\net10.0\publish\web.config
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\bin\Debug\net10.0\publish\appsettings.Development.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\bin\Debug\net10.0\publish\appsettings.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\bin\Debug\net10.0\publish\TrainingDirectory.Api.deps.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\bin\Debug\net10.0\publish\TrainingDirectory.Api.runtimeconfig.json
+C:\Users\yash.gokulgandhi\Desktop\TraineeManagement\TrainingDirectory.Api\bin\Debug\net10.0\publish\TrainingDirectory.Api.staticwebassets.endpoints.json
