@@ -27,7 +27,7 @@ docker-compose.vs.release.g.yml
 # NEVER commit your local credentials or corporate JWT signing keys
 .env
 local.env
-appsettings.Production.json
+appsettings.Development.json
 
 # ALLOW the template configuration to be tracked by Git
 !temp.env

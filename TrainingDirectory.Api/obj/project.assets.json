@@ -88,13 +88,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TrainingDirectory.Api\\TrainingDirectory.Api.csproj",
+      "projectUniqueName": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TrainingDirectory.Api\\TrainingDirectory.Api.csproj",
       "projectName": "TrainingDirectory.Api",
-      "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TrainingDirectory.Api\\TrainingDirectory.Api.csproj",
+      "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TrainingDirectory.Api\\TrainingDirectory.Api.csproj",
       "packagesPath": "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TrainingDirectory.Api\\obj\\",
+      "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TrainingDirectory.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\NuGet.Config",
         "C:\\Users\\yash.gokulgandhi\\NuGet.Config",
         "C:\\Users\\yash.gokulgandhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
@@ -569,5 +570,13 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://zeuslearning-824100177805.d.codeartifact.ap-south-1.amazonaws.com/nuget/training-nuget-store/v3/index.json."
+    }
+  ]
 }

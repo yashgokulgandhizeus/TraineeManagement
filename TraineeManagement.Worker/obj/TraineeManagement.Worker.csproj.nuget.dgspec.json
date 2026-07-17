@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj": {}
+    "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj": {
+    "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj",
+        "projectUniqueName": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj",
         "projectName": "TraineeManagement.Api",
-        "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj",
+        "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj",
         "packagesPath": "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\obj\\",
+        "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\NuGet.Config",
+          "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\NuGet.Config",
+          "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\NuGet.Config",
           "C:\\Users\\yash.gokulgandhi\\NuGet.Config",
           "C:\\Users\\yash.gokulgandhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
@@ -540,16 +541,17 @@
         }
       }
     },
-    "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj": {
+    "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
+        "projectUniqueName": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
         "projectName": "TraineeManagement.Worker",
-        "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
+        "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
         "packagesPath": "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Worker\\obj\\",
+        "outputPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\NuGet.Config",
           "C:\\Users\\yash.gokulgandhi\\NuGet.Config",
           "C:\\Users\\yash.gokulgandhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
@@ -564,8 +566,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj": {
-                "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj"
+              "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj": {
+                "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Api\\TraineeManagement.Api.csproj"
               }
             }
           }

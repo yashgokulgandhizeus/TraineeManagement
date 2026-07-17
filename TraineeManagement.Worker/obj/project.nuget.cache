@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GRb0DYuFbMQ=",
+  "dgSpecHash": "Hfhwkq25jtU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\yash.gokulgandhi\\Desktop\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
+  "projectFilePath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\aspnetcore.healthchecks.rabbitmq\\9.0.0\\aspnetcore.healthchecks.rabbitmq.9.0.0.nupkg.sha512",
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\aspnetcore.healthchecks.redis\\9.0.0\\aspnetcore.healthchecks.redis.9.0.0.nupkg.sha512",
@@ -120,5 +120,15 @@
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512",
     "C:\\Users\\yash.gokulgandhi\\.nuget\\packages\\zstdsharp.port\\0.8.6\\zstdsharp.port.0.8.6.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://zeuslearning-824100177805.d.codeartifact.ap-south-1.amazonaws.com/nuget/training-nuget-store/v3/index.json.",
+      "projectPath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\yash.gokulgandhi\\Desktop\\temp\\TraineeManagement\\TraineeManagement.Worker\\TraineeManagement.Worker.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
