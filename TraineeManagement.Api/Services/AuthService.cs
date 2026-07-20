@@ -38,28 +38,6 @@ public class AuthService : IAuthService
             isValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
         }
 
-        if (!isValid && request.UserName.Equals(_config["SeedData:AdminUsername"] ?? "Admin", StringComparison.OrdinalIgnoreCase))
-        {
-            var configAdminPassword = _config["SeedData:AdminPassword"];
-            if (!string.IsNullOrEmpty(configAdminPassword) && request.Password == configAdminPassword)
-            {
-                _logger.LogWarning("Admin authentication succeeded via secure configuration fallback parameters.");
-
-                if (user == null)
-                {
-                    user = new User
-                    {
-                        Id = 1,
-                        UserName = _config["SeedData:AdminUsername"] ?? "Admin",
-                        Email = _config["SeedData:AdminEmail"] ?? "admin@gmail.com",
-                        Role = UserRole.Admin
-                    };
-                }
-
-                isValid = true;
-            }
-        }
-
         if (!isValid)
         {
             _logger.LogCritical("Authentication failed for username context: " + request.UserName);
@@ -85,6 +63,7 @@ public class AuthService : IAuthService
             }
         };
     }
+
 
 
     public string GenerateJwtToken(int id, string userName, UserRole role)

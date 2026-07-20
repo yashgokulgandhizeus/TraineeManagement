@@ -89,7 +89,7 @@ public class AppDbContext : DbContext
            new User
            {
                Id = 2,
-               UserName = adminUser, 
+               UserName = "Trainee", 
                Email = adminUser,   
                PasswordHash = adminUser,
                Role = UserRole.Trainee
@@ -97,10 +97,10 @@ public class AppDbContext : DbContext
             new User
            {
                Id = 3,
-               UserName = adminUser, 
+               UserName = "Mentor", 
                Email = adminUser,   
                PasswordHash = adminUser,
-               Role = UserRole.Trainee
+               Role = UserRole.Mentor
            }
         );
 
