@@ -8,7 +8,7 @@ using TraineeManagement.Api.Services;
 
 namespace TraineeManagement.Api.Controllers;
 
-[Authorize]
+[Authorize(Roles ="Trainee,Mentor,Admin")]
 [ApiController]
 [Route("api/processing-jobs")]
 public class ProcessingJobsController : ControllerBase

@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TraineeManagement.Api.Services;
 using TraineeManagement.Api.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TraineeManagement.Api.Controllers;
 
 [ApiController]
 [Route("api/integration")]
+[Authorize(Roles ="Trainee,Mentor,Admin")]
 public class IntegrationTestController : ControllerBase
 {
     private readonly ITrainingDirectoryClient _directoryClient;

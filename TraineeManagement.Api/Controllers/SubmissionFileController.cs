@@ -5,7 +5,7 @@ using TraineeManagement.Api.Services;
 
 namespace TraineeManagement.Api.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Trainee,Mentor,Admin")]
     [ApiController]
     [Route("api")]
     public class SubmissionFileController : ControllerBase

@@ -7,7 +7,7 @@ namespace TraineeManagement.Api.Controllers;
 
 [ApiController]
 [Route("api/submissions")]
-[Authorize]
+[Authorize(Roles ="Trainee,Admin")]
 public class SubmissionController : ControllerBase
 {
     private readonly ISubmissionService _service;

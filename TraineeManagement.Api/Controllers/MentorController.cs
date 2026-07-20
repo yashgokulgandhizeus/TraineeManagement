@@ -7,7 +7,7 @@ using TraineeManagement.Api.Models;
 
 [ApiController]
 [Route("api/mentor")]
-[Authorize]
+[Authorize(Roles ="Mentor,Admin")]
 public class MentorController : ControllerBase
 {
     private readonly IMentorService _service;

@@ -7,7 +7,7 @@ using TraineeManagement.Api.Services;
 
 [ApiController]
 [Route("api/review")]
-[Authorize]
+[Authorize(Roles ="Mentor,Admin")]
 public class ReviewController : ControllerBase
 {
     private readonly IReviewService _service;

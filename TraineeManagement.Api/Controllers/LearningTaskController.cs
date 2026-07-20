@@ -2,11 +2,12 @@ namespace TraineeManagement.Api.Controllers;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 using TraineeManagement.Api.Dtos;
 
 [ApiController]
 [Route("api/learning-task")]
-[Authorize]
+[Authorize(Roles ="Trainee,Mentor,Admin")]
 public class LearningTaskController : ControllerBase
 {
     private readonly ILearningTaskService _service;

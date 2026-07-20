@@ -8,7 +8,7 @@ namespace TraineeManagement.Api.Controllers;
 
 [ApiController]
 [Route("api/task-assignments")]
-[Authorize]
+[Authorize(Roles ="Trainee,Mentor,Admin")]
 public class TaskAssignmentController : ControllerBase
 {
     private readonly ITaskAssignmentService _service;

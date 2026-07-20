@@ -74,18 +74,35 @@ public class AppDbContext : DbContext
         var adminEmail = _configuration["SeedData:AdminEmail"] ?? "admin@gmail.com";
         var adminPassword = _configuration["SeedData:AdminPassword"] ?? "admin@123";
 
-        // AUTOMATED HASH GENERATION:
-        // Uses a fixed work-factor salt so EF Core snapshot model values remain stable across migration evaluations
         string fixedSalt = BCrypt.Net.BCrypt.GenerateSalt(11);
         string secureAdminHash = BCrypt.Net.BCrypt.HashPassword(adminPassword, fixedSalt);
 
-        modelBuilder.Entity<User>().HasData(new User
-        {
-            Id = 1,
-            UserName = adminUser,
-            Email = adminEmail,
-            PasswordHash = secureAdminHash, // Assigned programmatically
-            Role = UserRole.Admin
-        });
+        modelBuilder.Entity<User>().HasData(
+           new User
+           {
+               Id = 1,
+               UserName = adminUser,
+               Email = adminEmail,
+               PasswordHash = secureAdminHash,
+               Role = UserRole.Admin
+           },
+           new User
+           {
+               Id = 2,
+               UserName = adminUser, 
+               Email = adminUser,   
+               PasswordHash = adminUser,
+               Role = UserRole.Trainee
+           },
+            new User
+           {
+               Id = 3,
+               UserName = adminUser, 
+               Email = adminUser,   
+               PasswordHash = adminUser,
+               Role = UserRole.Trainee
+           }
+        );
+
     }
 }
